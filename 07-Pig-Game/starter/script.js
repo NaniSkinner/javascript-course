@@ -92,7 +92,7 @@ btnHold.addEventListener('click', function () {
       scores[activePlayer]; // dynamicly replacing by `` template string
 
     //2. Check if player's score is >= 100
-    if (scores[activePlayer] >= 30) {
+    if (scores[activePlayer] >= 100) {
       //Finish the game
       playing = false;
       diceEl.classList.add('hidden'); // removing the dice once game is won!
