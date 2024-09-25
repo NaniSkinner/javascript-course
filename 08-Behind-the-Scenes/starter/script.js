@@ -92,22 +92,40 @@
 // };
 // calcAgeArrow(1980);
 
+// const jonas = {
+//   year: 1991,
+//   calcAge: function () {
+//     console.log(this); // object that is calling the method. Jonas is the owner of the method
+//     console.log(2037 - this.year);
+//   },
+// };
+// jonas.calcAge();
+
+// const matilda = {
+//   year: 2017,
+// };
+
+// matilda.calcAge = jonas.calcAge; // method borrowing
+// matilda.calcAge();
+// // allways point to the object that is calling the method
+
+// const f = jonas.calcAge;
+// f();
+
+
+var firstName = 'Matilda'; // creates a property on a global object (var)
+
+// object literal. Not a block
 const jonas = {
+  firstName: 'Jonas',
   year: 1991,
   calcAge: function () {
     console.log(this); // object that is calling the method. Jonas is the owner of the method
     console.log(2037 - this.year);
   },
-};
-jonas.calcAge();
 
-const matilda = {
-  year: 2017,
-};
+  greet: () => 
+    console.log(`Hey ${this.firstName}`), // arrow function does not get its own this keyword. Never use it for a method 
+   
 
-matilda.calcAge = jonas.calcAge; // method borrowing
-matilda.calcAge();
-// allways point to the object that is calling the method
-
-const f = jonas.calcAge;
-f();
+jonas.greet(), // does not greer jonas b/c of the arrow function 
