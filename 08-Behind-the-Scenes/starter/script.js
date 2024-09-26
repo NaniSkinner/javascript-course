@@ -112,20 +112,35 @@
 // const f = jonas.calcAge;
 // f();
 
+// var firstName = 'Matilda'; // creates a property on a global object (var)
 
-var firstName = 'Matilda'; // creates a property on a global object (var)
+// // object literal. Not a block
+// const jonas = {
+//   firstName: 'Jonas',
+//   year: 1991,
+//   calcAge: function () {
+//     console.log(this); // object that is calling the method. Jonas is the owner of the method
+//     console.log(2037 - this.year);
+//   },
 
-// object literal. Not a block
-const jonas = {
-  firstName: 'Jonas',
-  year: 1991,
-  calcAge: function () {
-    console.log(this); // object that is calling the method. Jonas is the owner of the method
-    console.log(2037 - this.year);
-  },
+//   greet: () =>
+//     console.log(`Hey ${this.firstName}`), // arrow function does not get its own this keyword. Never use it for a method
 
-  greet: () => 
-    console.log(`Hey ${this.firstName}`), // arrow function does not get its own this keyword. Never use it for a method 
-   
+// jonas.greet(), // does not greer jonas b/c of the arrow function
 
-jonas.greet(), // does not greer jonas b/c of the arrow function 
+let age = 30; 
+let oldAge= age; 
+age = 31; 
+console.log(age); 
+console.log(oldAge); // is set to be 30  
+
+const me = {
+  name: 'Jonas',
+  ager: 30,
+}; 
+const friend = me: 
+friend.age=27; 
+console.log('Friend', friend);
+console.log('Me', me);
+// source of confusion 
+
