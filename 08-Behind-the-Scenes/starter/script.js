@@ -128,19 +128,58 @@
 
 // jonas.greet(), // does not greer jonas b/c of the arrow function
 
-let age = 30; 
-let oldAge= age; 
-age = 31; 
-console.log(age); 
-console.log(oldAge); // is set to be 30  
+// let age = 30;
+// let oldAge= age;
+// age = 31;
+// console.log(age);
+// console.log(oldAge); // is set to be 30
 
-const me = {
-  name: 'Jonas',
-  ager: 30,
-}; 
-const friend = me: 
-friend.age=27; 
-console.log('Friend', friend);
-console.log('Me', me);
-// source of confusion 
+// const me = {
+//   name: 'Jonas',
+//   ager: 30,
+// };
+// const friend = me:
+// friend.age=27;
+// console.log('Friend', friend);
+// console.log('Me', me);
+// // source of confusion
 
+// Primitive Types
+let lastName = 'Williams';
+let oldLastName = lastName;
+lastName = 'Davis';
+console.log(lastName, oldLastName); // Davis Williams
+
+// Referenece Type
+const jessica = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+};
+const marriedJessica = jessica;
+marriedJessica.lastName = 'Davis';
+console.log('Before marraiged', jessica);
+console.log('After marriege', marriedJessica);
+// Jessica Davis in both, b/c it did not create a new object in the heap. Its another variable that point to the same object. Also is a const and we changed in the heap
+
+marriedJessica = {}; // does not work bc its in the stack. If it was a let it would be allowed.
+
+// Copying Objects
+const jessica2 = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+  family: ['Alice', 'Bob'], //array is an object. Deeply nested, does not coppy to new object
+};
+
+const jessicaCopy = Object.assign({}, jessica2);
+jessicaCopy.lastName = 'Davis';
+console.log('Before marriage:', jessica2);
+console.log('After marriage:', jessicaCopy);
+// This does give us both last names. It is a real copy - a new object  was created to the heap
+
+jessicaCopy.family.push('Mary'); // the push is adding it at the end of the arrays
+jessicaCopy.family.push('John');
+
+console.log('Before marriage:', jessica2);
+console.log('After marriage:', jessicaCopy); // points at the same object at the heap. Changed the array in both
