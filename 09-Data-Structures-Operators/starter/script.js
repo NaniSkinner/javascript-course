@@ -1,38 +1,77 @@
 'use strict';
 
-// Data needed for a later exercise
-const flights =
-  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+// // Data needed for a later exercise
+// const flights =
+//   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
-// Data needed for first part of the section
-const restaurant = {
-  name: 'Classico Italiano',
-  location: 'Via Angelo Tavanti 23, Firenze, Italy',
-  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-  openingHours: {
-        thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
+// // Data needed for first part of the section
+// const restaurant = {
+//   name: 'Classico Italiano',
+//   location: 'Via Angelo Tavanti 23, Firenze, Italy',
+//   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+//   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+//   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+//   openingHours: {
+//     thu: {
+//       open: 12,
+//       close: 22,
+//     },
+//     fri: {
+//       open: 11,
+//       close: 23,
+//     },
+//     sat: {
+//       open: 0, // Open 24 hours
+//       close: 24,
+//     },
+//   },
 
-  order: funcrtion(starterIndex, mainIndex){
-    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-  },
-};
+//   order: function (starterIndex, mainIndex) {
+//     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+//   },
+//   // Pass an object into a function as an argument and the function distributes the object
+//   orderDelivery: function ({ starterIndex, mainIndex, time, address }) {
+//     console.log(
+//       `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+//     );
+//   },
+// };
+// //passed one agument, one object
+// restaurant.orderDelivery({
+//   time: '22:30',
+//   address: 'Via del Sol 21',
+//   mainIndex: 2,
+//   starterIndex: 2,
+// });
 
+// //order of elements does not metter
+// const { name, openingHours, categories } = restaurant;
+// console.log(name, openingHours, categories);
 
-// 
+// //variable names diff from properties
+// const {
+//   name: restaurantName,
+//   openingHours: hours,
+//   categories: tags,
+// } = restaurant;
+// console.log(restaurantName, hours, tags);
+
+// // destructuring the menu & setting a default value
+// const { menu = [], starterMenu: starteres = [] } = restaurant;
+// console.log(menu, starteres);
+
+// // mutating variables while distructing objects
+// let a = 111;
+// let b = 999;
+// const obj = { a: 23, b: 7, c: 14 };
+// ({ a, b } = obj);
+
+// //nested objects
+// const {
+//   fri: { open, close },
+// } = openingHours;
+// console.log(opne, close);
+
 // const arr = [2, 3, 4];
 // const a = arr[0];
 // const b = arr[1];
@@ -49,10 +88,10 @@ const restaurant = {
 // [main, secondary] = [secondary, main];
 // console.log(main, secondary);
 
-// const [starter, mainCorse] = (restaurant.order (2,0));
+// const [starter, mainCorse] = restaurant.order(2, 0);
 // console.log(starter, mainCorse);
 
-
+// Assignments
 const books = [
   {
     title: 'Algorithms',
@@ -278,22 +317,56 @@ const books = [
   },
 ];
 
-//Destructure the books array into two variables called firstBook and secondBook.//
-const [firstBook, secondBook] = books;
+// // Destructuring Arrays
+// const [firstBook, secondBook] = books;
 
-//Destructure the books array into a variable called thirdBook. You must skip the first two books//
-const [, , thirdBook] = books;
+// const [, , thirdBook] = books;
 
-//Below is the nested ratings array that contains two other arrays. Destructure the nested ratings arrays into two variables called rating and ratingsCount. In the result of your destructuring, the ratings variable should store a number 4.19, and the ratingsCount variable should store a number 144584.//
-const ratings = [
-  ['rating', 4.19],
-  ['ratingsCount', 144584],
-];
+// const ratings = [
+//   ['rating', 4.19],
+//   ['ratingsCount', 144584],
+// ];
 
-const [[, rating], [, ratingsCount]] = ratings;
+// const [[, rating], [, ratingsCount]] = ratings;
 
-// Below is the ratingStars array. Destructure it into three variables called fiveStarRatings, oneStarRatings and threeStarRatings. Assign the threeStarRatings variable with a default value of 0.//
-const ratingStars = [63405, 1808];
+// const ratingStars = [63405, 1808];
 
-const [fiveStarRatings, oneStarRatings, threeStarRatings = 0] = ratingStars;
-console.log(ratingStars);
+// const [fiveStarRatings, oneStarRating, threeStarRatings = 0] = ratingStars;
+
+// //Destructure the books array into two variables called firstBook and secondBook.//
+// const [firstBook, secondBook] = books;
+
+// //Destructure the books array into a variable called thirdBook. You must skip the first two books//
+// const [, , thirdBook] = books;
+
+// //Below is the nested ratings array that contains two other arrays. Destructure the nested ratings arrays into two variables called rating and ratingsCount. In the result of your destructuring, the ratings variable should store a number 4.19, and the ratingsCount variable should store a number 144584.//
+// const ratings = [
+//   ['rating', 4.19],
+//   ['ratingsCount', 144584],
+// ];
+
+// const [[, rating], [, ratingsCount]] = ratings;
+
+// // Below is the ratingStars array. Destructure it into three variables called fiveStarRatings, oneStarRatings and threeStarRatings. Assign the threeStarRatings variable with a default value of 0.//
+// const ratingStars = [63405, 1808];
+
+// const [fiveStarRatings, oneStarRatings, threeStarRatings = 0] = ratingStars;
+// console.log(ratingStars);
+
+// Destructing Objects
+
+//Destructure the first book object from the books array into variables called title, author and ISBN.//
+const { title, author, ISBN } = books[0];
+
+// Each book object has the keywords property. Destructure the first book object from the books array into a variable called tags. The tags variable should be assigned with the value of the keywords property.
+const { keywords: tags } = books[0];
+
+// The seventh book from the books array is missing the programmingLanguage property. Destructure the seventh book object (books[6]) into variables called language and programmingLanguage. Assign the programmingLanguage variable with a default value of 'unknown'.
+const { language, programmingLanguage = 'unknown' } = books[6];
+
+//NOTES: (:) renamening (=) assigning
+
+// Below are two variables called bookTitle and bookAuthor. Reassign them with the values of the title and author properties of the first book object from the books array.
+let bookTitle = 'unknown';
+let bookAuthor = 'unknown';
+({ title: bookTitle, author: bookAuthor } = books[0]);
