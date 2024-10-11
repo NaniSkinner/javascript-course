@@ -1,41 +1,53 @@
 'use strict';
 
-// // Data needed for a later exercise
-// const flights =
-//   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+// Data needed for a later exercise
+const flights =
+  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
-// // Data needed for first part of the section
-// const restaurant = {
-//   name: 'Classico Italiano',
-//   location: 'Via Angelo Tavanti 23, Firenze, Italy',
-//   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-//   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-//   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-//   openingHours: {
-//     thu: {
-//       open: 12,
-//       close: 22,
-//     },
-//     fri: {
-//       open: 11,
-//       close: 23,
-//     },
-//     sat: {
-//       open: 0, // Open 24 hours
-//       close: 24,
-//     },
-//   },
+// Data needed for first part of the section
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0, // Open 24 hours
+      close: 24,
+    },
+  },
 
-//   order: function (starterIndex, mainIndex) {
-//     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-//   },
-//   // Pass an object into a function as an argument and the function distributes the object
-//   orderDelivery: function ({ starterIndex, mainIndex, time, address }) {
-//     console.log(
-//       `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
-//     );
-//   },
-// };
+  order: function (starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+  // Pass an object into a function as an argument and the function distributes the object
+  orderDelivery: function ({ starterIndex, mainIndex, time, address }) {
+    console.log(
+      `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
+
+  orderPasta: function(ing1, ing2, ing3){
+    console.log(`Here is your delicius pasta wihr ${ing1}, ${ing2} and ${ing3}`);
+  },
+
+  orderPizza: function(mainIngredient, ...otherIngredients){
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  }
+};
+
+
+
 // //passed one agument, one object
 // restaurant.orderDelivery({
 //   time: '22:30',
@@ -90,6 +102,76 @@
 
 // const [starter, mainCorse] = restaurant.order(2, 0);
 // console.log(starter, mainCorse);
+
+// The Spread Operator (...) takes all the elements from array and does not create new variables. Only use it were values are writiing separated by commas. Or passing values into a function
+
+// Create a new array based on this one  with some elements at the begining
+
+const arr = [7, 8, 9];
+const badNewArr = [ 1,2 arr[0], arr [1], arr[2]]; // [1,2,7,8,9] 
+
+const newArr = [1, 2, ...arr]; // [1,2,7,8,9] 
+
+// log individual elements of the new array 
+console.log(...newArr); // 1 2 7 8 9
+
+//Createa an array w/ one more food item in the old array 
+const newMenu = [...restaurant.mainMenu, 'Gnocci']; 
+
+//Create shallow coppies of arrays 
+const mainManueCopy = [...restaurant.mainMenu]; 
+
+//Join 2 or more arrays together 
+const menu = [...restaurant.mainMenu, ..restaurant.starterMenu]; 
+
+//iterables: are arrays, strings, maps, sets. NOT objects
+const str = 'Jonas'; 
+const letters =[...str, ' ', 'S.']; 
+console.log(letters); // "J" "o""n" "a""s" """S." 
+console.log(...str); // J o n a s 
+
+//fucntion accepts multiple arguments and use ... to pass the arguments 
+const ingredients = [prompt('Let\'s make pasta! Ingredients 1?'), prompt("Ingredient 2?"), prompt("Ingredient 3?")]; // get ingredients from a promp window (\ escaping the completion of '')   
+
+//Call the order pasta function 
+restaurant.orderPasta(...ingredients); /// mushrooms, asparagus, cheese 
+
+// Objects - creating a new 
+const newRestaurant = {FoundedIn: 1998...restaurant, founder:'Guisepi'}// All the old restaurant info with the new info 
+
+const restaurantCopy = {...restaurant}; 
+restaurantCopy.name = 'Ristorante Roma' // Name changed on the copy not the original restaurant 
+
+
+// Rest Pattern and Parameters - collect musltiple elements and place them into an array 
+
+//Distructuring 
+
+//SPREAD, b/c on RIGHT side of = 
+const arr = [1, 2, 3 ...[3,4]]; 
+
+//REST, b/c on LEFT side of =  it takes the rest of the eelements and place them into a new array, must also be the last element, only one rest 
+const [a,b, ...others] = [1, 2, 3, 4, 5]; //1,2,[3,4,5]
+
+const [pizza, , ristto, ...otherfood] = [...restaurant.mainMenu, ...restaurant.starterMenu] // pizza, rissotto and the rest of elements 
+
+//REST in Objects 
+const {sat, ...weekdays} = restaurant.openingHours; // friday and thursday listed 
+
+//Functions 
+//Rest peramiters 
+const add = function(...numbers) {
+  let sum = 0; 
+  for(let i=0; i<numbers.length; i++) sum += numbers [i]; 
+console.log(numbers); //all the arrays of the numbers bellow 
+}
+
+add(2,3)
+add(3,5,7,2)
+
+restaurant.orderPizza('mushroom', 'onion', 'pepperoni'); 
+
+
 
 // Assignments
 const books = [
@@ -401,12 +483,25 @@ const books = [
 
 // If year is undefined (was not passed), it should be assigned with a default value of 'year unknown'.
 
-printBookInfo({
-  title: 'Algorithms',
-  author: 'Robert Sedgewick',
-  year: '2011',
-}); //"Algorithms by Robert Sedgewick, 2011"
+// printBookInfo({
+//   title: 'Algorithms',
+//   author: 'Robert Sedgewick',
+//   year: '2011',
+// }); //"Algorithms by Robert Sedgewick, 2011"
 
-function printBookInfo({ title, author, year = 'year unknown' }) {
-  console.log(`${title} by ${author}, ${year}`);
+// function printBookInfo({ title, author, year = 'year unknown' }) {
+//   console.log(`${title} by ${author}, ${year}`);
+// }
+
+//The Separator Operator 
+
+// Each book object has the author property, which stores an array of strings (author names) if there are multiple authors, or a single string (author name) if there is just one author.
+// Declare an array called bookAuthors, and fill it with authors of the first two books from the books array. The bookAuthors array should have just one level (no nested arrays).
+
+const bookAuthors = [...books[0].author, ...books[1].author];
+
+// Write a function called spellWord that accepts a single string as an argument. This function should log to the console each letter of the argument separated by a space.
+
+function spellWord(JavaScript) { 
+  console.log(...JavaScript);
 }
