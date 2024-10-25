@@ -46,6 +46,33 @@ const restaurant = {
   }
 };
 
+//OR operator - Use ANY data type, return ANY data type, short-circuiting 
+console.log(3 || 'Jonas'); // 3 bc is a true value  
+console.log('' || 'Jonas'); // Jonas 
+console.log(true || 0); // True 
+console.log(undefined || null); // null - undefined is a false value 
+
+console.log(undefined || 0 || '' || 'Helo' || 23 || null); // Helo 
+
+const guests1 = restaurant.numGuests ? restaurant.numGuest :10; 
+console.log(guests1); // 10 - since restaurant numGuest is undifined then it goes to the number set 
+
+const guest2 = restaurant.numGuest || 10
+console.log(guest2); // 10 since it is undefiend 
+
+
+//AND Operator = opposite of the OR, only true if all values are true 
+
+console.log(0 && 'Jonas'); // 0 returs a falsy 
+console.log(7 && 'Jonas'); // Jonas when is true it continues to the last value 
+
+console.log('Hello' && 23 && null && 'jonas'); // null it evaluation stops when is not true anymore 
+
+if(restaurant.orderPizza){
+  restaurant.orderPizza('mushroom', 'spinach'); 
+}
+restaurant.orderPizza && restaurant.orderPizza('mushroom', 'spinach');  // 
+
 
 
 // //passed one agument, one object
