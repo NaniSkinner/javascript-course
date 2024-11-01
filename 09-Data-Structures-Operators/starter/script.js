@@ -77,6 +77,32 @@ restaurant.orderPizza && restaurant.orderPizza('mushroom', 'spinach');  //
 
 
 
+const rest1 = { 
+  name: 'Capri',
+  numGuests: 20, 
+}; 
+
+const rest2 = {
+  name: 'La Piazza', 
+  owner: 'Giovanni Rossi', 
+}; 
+
+// adding number of Guest property to the objects that dont have them 
+
+// OR Operator 
+rest2.numGuests = rest2.numGuests || 10; // short circuiting 20 
+
+rest1.numGuests || = 10; // same as the last one but better written 20 
+
+//Nulish assigment Operator 
+rest1.numGuests ?? = 10;
+
+// AND operator - adding owner 
+rest2.owner = rest2.owner && '<ANONYMOS>' // replaces the string 
+
+rest1.owner &&= '<ANONYMOS>' // assignes a value to a variable if is true 
+
+
 // //passed one agument, one object
 // restaurant.orderDelivery({
 //   time: '22:30',
