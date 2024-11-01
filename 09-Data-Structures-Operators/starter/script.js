@@ -60,6 +60,8 @@ console.log(guests1); // 10 - since restaurant numGuest is undifined then it goe
 const guest2 = restaurant.numGuest || 10
 console.log(guest2); // 10 since it is undefiend 
 
+//Nulish Coalesing Operator = works with concept of knoweledge values rather than falsy (null and undefined)
+const guestCorrect = restaurant.numGuests ?? 10; // 0 real value 
 
 //AND Operator = opposite of the OR, only true if all values are true 
 
