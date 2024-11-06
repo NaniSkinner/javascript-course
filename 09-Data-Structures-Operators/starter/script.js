@@ -46,6 +46,47 @@ const restaurant = {
   }
 };
 
+// Looping Arrays: The for-of-Loop 
+for (const item of menu) console.log(item); // gives all the items of the menu one by one. 
+
+for (const item of menu.entries()) console.log(item); // gives entries 
+
+// Optional Chaining  - get openening hours for Momday 
+console.log(restaurant.openingHours.mom?.open); //only if monday excist then checks for opening 
+console.log(restaurant.openingHours?.mom?.open)
+
+// finding out if mon is open 
+for (const day of days) {
+  const open = restaurant.openingHours[day]?.open ?? 'closed'; 
+  console.log(`On ${day}, we open at ${open}`); // [is used because of the array of days] ??(coalasing Operator) - is used because the hours are 0 so that is continues to read the info    
+}
+
+// Arrays chaining 
+const user = [{name:'Nani', email: 'hello@world'}]; 
+
+console.log(user[0]?.name ?? 'User array empty');//user at 0 give name if not state that is empty 
+
+//Looping Objects: object keys, values and entries 
+
+//Porperty Names 
+const properties = Object.keys(openingHours); 
+
+let openStr = `We are open on ${properties.length} days`; 
+for (const day of properties) {
+  openStr +=`${day}`,;
+}
+console.log(openStr); // We are open on 3 days: thu, fri, sat 
+
+//Properties Values 
+const values = Object.values(openingHours); //opening hours information 
+
+// Names plus values - entire object 
+const enteries = Object.entries(openingHours); // key (name) and object (hour)
+
+for (const x of enteries){
+  console.log(x);
+} // when the value is an object it need to be specified (opne, close)
+
 //OR operator - Use ANY data type, return ANY data type, short-circuiting 
 console.log(3 || 'Jonas'); // 3 bc is a true value  
 console.log('' || 'Jonas'); // Jonas 
