@@ -267,7 +267,26 @@ add(3,5,7,2)
 
 restaurant.orderPizza('mushroom', 'onion', 'pepperoni'); 
 
+// MAP
 
+const question = new Map ([
+  ['question', 'What is the best programing language in the world?'],[1, 'C'],
+  [2, 'Java'],
+  [3, 'JavaScript'],
+  ['correct' , 3 ]
+  [true, 'Correct!'],
+  [false, 'Try again'], 
+]);
+
+for (const [key, value] of question) {
+  if (typeof key === 'number') console.log(`Answer ${key}: ${value} `);
+}
+
+// have the answer from the boolean 
+console.log(question.get(question.get('correct')=== answer));
+
+//converting map to array 
+console.log(...question);
 
 // Assignments
 const books = [
